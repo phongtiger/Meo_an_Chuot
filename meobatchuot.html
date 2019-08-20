@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+</body>
+<script>
+    let Rat = function (nameRat, weightRat, speedRat,a) {
+        this.nameRat = nameRat;
+        this.weightRat = weightRat;
+        this.liveRat = a;
+        this.getWeightRat = function () {
+            return this.weightRat;
+        };
+        this.getLiveRat = function () {
+            return this.liveRat;
+        };
+        this.speedRat = speedRat;
+        this.getSpeedRat = function () {
+            return this.speedRat;
+        };
+        this.sayRat =function () {
+            if(this.liveRat){
+                alert("Chuột " + this.nameRat + " kêu chit ");
+            }
+        };
+    };
+    let Cat = function (nameCat, weightCat, speedCat) {
+        this.nameCat = nameCat;
+        this.weightCat = weightCat;
+        this.getWeightCat = function () {
+            return this.weightCat;
+        };
+
+        this.speedCat = speedCat;
+        this.sayCat = function () {
+            alert("Mèo "+ nameCat +", meo, meo, meo oo oo !");
+        };
+        this.catchRat = function (rat) {
+            if(rat.getSpeedRat()<this.speedCat){
+                return true;
+            }else {
+                return false;
+            }
+        };
+        this.eatRat = function (rat) {
+            if(this.catchRat(rat) && rat.getLiveRat()){
+                return true;
+            } else return false;
+        };
+        this.catUp = function (rat) {
+            if(this.eatRat(rat)){
+                this.weightCat += rat.getWeightRat();
+            }
+        }
+    };
+    let Rat1 = new Rat ("Jerry",1,25,true);
+    let Cat1 = new Cat ("Tom", 4,20);
+    let Rat3 = new Rat ("Số nhọ",1,15,true );
+    Rat1.sayRat("Jerry",1,25,true);
+    Rat3.sayRat("Số nhọ",1,15,true );
+    Cat1.sayCat("Tom", 4,20);
+
+    Cat1.catchRat(Rat1);
+    console.log(Cat1.catchRat(Rat1));
+
+    Cat1.catchRat(Rat3);
+    console.log(Cat1.catchRat(Rat3));
+
+    Cat1.eatRat(Rat1);
+    console.log(Cat1.eatRat(Rat1));
+
+    Cat1.eatRat(Rat3);
+    console.log(Cat1.eatRat(Rat3));
+    Cat1.catUp(Rat3)
+    console.log(Cat1.getWeightCat());
+
+
+
+</script>
+</html>
